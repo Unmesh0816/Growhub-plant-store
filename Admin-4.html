@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-4 Test</title>
+    <link rel="stylesheet" href="./Admin1.css">
+</head>
+<body>
+      <header class="site-header">
+      <div class="brand">
+        <img
+          src="./pngtree-canabis-logo-template-vector-plant-cannabis-white-vector-png-image_38489426-removebg-preview.png"
+          alt="Verdant Logo"
+          class="verdant-logo-img"
+        />
+        <a href="./index.html"><h2>GrowHub</h2></a>
+      </div>
+
+      <nav class="nav">
+        <a href="./Plant.html">Plants</a>
+        <a href="#">Tools & Pots</a>
+        <a href="#">Sale</a>
+        <a href="#">Subscriptions</a>
+        <a href="./PlantCare.html">Plant Care</a>
+        <a href="#" class="login">Log in</a>
+      </nav>
+    </header>
+    <section class="admin-content">
+        <div class="section-content">
+            <h1>Keep How to Repot Plants</h1>
+            <img src="https://static.wixstatic.com/media/c837a6_8e8f4d5c277e469ba4af3f5b3216ced5~mv2.jpg/v1/fill/w_1112,h_1109,fp_0.50_0.50,q_90,enc_avif,quality_auto/c837a6_8e8f4d5c277e469ba4af3f5b3216ced5~mv2.jpg" alt="">
+            <p>Repotting plants is an important part of plant care that helps support healthy growth by giving roots more space and fresh nutrients. It is best to repot when a plant becomes root-bound, shows slow growth, or when roots begin to grow out of the drainage holes. Choose a pot that is slightly larger than the current one and use fresh, well-draining potting mix suitable for the plant type. Gently remove the plant from its old pot, loosen the roots carefully, and place it into the new container at the same soil level as before. After repotting, water the plant thoroughly and keep it in bright, indirect light for a few days to help it recover and adjust to its new environment.</p>
+                  <h3 class="comments-title">Comments</h3>
+                     <hr class="divider">
+                  <input  type="text" class="comment-input" placeholder="Write a comment..."
+    >
+        </div>
+    </section>
+     <footer class="verdant-footer">
+      <div class="footer-container">
+        <!-- Logo -->
+        <div class="footer-logo">
+          <img
+            src="./pngtree-canabis-logo-template-vector-plant-cannabis-white-vector-png-image_38489426-removebg-preview.png"
+            alt="Verdant Logo"
+            class="verdant-logo-img"
+          />
+          <h2>GrowHub</h2>
+        </div>
+
+        <div class="footer-content">
+          <!-- Newsletter left -->
+          <div class="footer-newsletter">
+            <h3>Join Our Garden</h3>
+            <p>
+              We’ll tell you about monthly drops and plant care tips. No spam,
+              we promise.
+            </p>
+
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="footer-input"
+            />
+
+            <label class="footer-checkbox">
+              <input type="checkbox" />
+              Yes, subscribe me to your newsletter.
+            </label>
+
+            <button class="footer-btn">Join Now</button>
+          </div>
+
+          <!-- Links -->
+          <div class="footer-links-grid">
+            <div class="footer-column">
+              <h4>Shop</h4>
+              <a href="#">Plants</a>
+              <a href="#">Tools & Pots</a>
+              <a href="#">Subscriptions</a>
+              <a href="#">Plant Care</a>
+            </div>
+
+            <div class="footer-column">
+              <h4>Helpful Links</h4>
+              <a href="#">FAQ</a>
+              <a href="#">Terms & Conditions</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Refund Policy</a>
+              <a href="#">Shipping Policy</a>
+              <a href="#">Accessibility Statement</a>
+            </div>
+
+            <div class="footer-column">
+              <h4>Company</h4>
+              <a href="#">Our Story</a>
+              <a href="#">Contact Us</a>
+              <br />
+              <a href="#">Instagram</a>
+              <a href="#">Facebook</a>
+              <a href="#">Pinterest</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- bottom -->
+        <div class="footer-bottom">
+          © 2035 by Verdant. Built on <a href="#">Wix Studio</a>
+        </div>
+      </div>
+    </footer>
+    <!-- CART DRAWER -->
+    <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+
+    <aside
+      class="cart-drawer"
+      id="cartDrawer"
+      role="dialog"
+      aria-label="Shopping cart"
+      aria-hidden="true"
+    >
+      <div class="cart-header">
+        <h2>Cart <span class="cart-count" id="cartCount">(0)</span></h2>
+        <button class="cart-close" id="cartClose" aria-label="Close cart">
+          ✕
+        </button>
+      </div>
+
+      <div class="cart-body" id="cartBody">
+        <!-- Items will be injected here -->
+        <div class="cart-items" id="cartItems"></div>
+
+        <div class="cart-promo">
+          <label for="promoInput" class="sr-only">Promo code</label>
+          <input id="promoInput" placeholder="Enter a promo code" />
+        </div>
+
+        <div class="cart-summary">
+          <div class="summary-row">
+            <span>Estimated total</span>
+            <strong id="cartTotal">$0.00</strong>
+          </div>
+          <button id="checkoutBtn" class="btn checkout">Checkout</button>
+          <a href="cart.html" class="view-cart">View Cart</a>
+        </div>
+      </div>
+    </aside>
+
+    <script>
+      // Quantity buttons
+      const dec = document.getElementById("decrease");
+      const inc = document.getElementById("increase");
+      const qty = document.getElementById("quantity");
+
+      dec.addEventListener("click", () => {
+        const v = Math.max(1, parseInt(qty.value || 1) - 1);
+        qty.value = v;
+      });
+      inc.addEventListener("click", () => {
+        const v = Math.max(1, parseInt(qty.value || 1) + 1);
+        qty.value = v;
+      });
+
+      // Simple accordion
+      document.querySelectorAll(".acc-toggle").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const expanded = btn.getAttribute("aria-expanded") === "true";
+          btn.setAttribute("aria-expanded", String(!expanded));
+          const panel = btn.nextElementSibling;
+          if (expanded) {
+            panel.hidden = true;
+            btn.querySelector(".acc-sign").textContent = "+";
+          } else {
+            panel.hidden = false;
+            btn.querySelector(".acc-sign").textContent = "−";
+          }
+        });
+      });
+      (function () {
+        // Elements
+        const addToCartBtn = document.querySelector(".btn.primary");
+        const cartOverlay = document.getElementById("cartOverlay");
+        const cartDrawer = document.getElementById("cartDrawer");
+        const cartClose = document.getElementById("cartClose");
+        const cartItemsEl = document.getElementById("cartItems");
+        const cartTotalEl = document.getElementById("cartTotal");
+        const cartCountEl = document.getElementById("cartCount");
+
+        // Simple in-memory cart (array of items)
+        const cart = [];
+
+        // Utility: parse price string "$32.00" -> number 32
+        function parsePrice(priceText) {
+          if (!priceText) return 0;
+          const n = priceText.replace(/[^0-9.-]+/g, "");
+          return parseFloat(n) || 0;
+        }
+
+        // Utility: format number to currency
+        function formatPrice(n) {
+          return "$" + n.toFixed(2);
+        }
+
+        // Render cart items and totals
+        function renderCart() {
+          cartItemsEl.innerHTML = "";
+          let total = 0;
+          cart.forEach((item, idx) => {
+            const line = item.price * item.qty;
+            total += line;
+
+            const itemEl = document.createElement("div");
+            itemEl.className = "cart-item";
+            itemEl.innerHTML = `
+        <div class="thumb"><img src="${item.image}" alt="${escapeHtml(
+              item.name
+            )}"></div>
+        <div class="meta">
+          <h4>${escapeHtml(item.name)}</h4>
+          <div class="meta-sub">Size: ${escapeHtml(item.size || "—")}</div>
+          <div class="qty-inline" data-index="${idx}">
+            <button class="qty-dec" aria-label="Decrease">−</button>
+            <span class="qty-val">${item.qty}</span>
+            <button class="qty-inc" aria-label="Increase">+</button>
+          </div>
+        </div>
+        <div class="line-price">${formatPrice(line)}</div>
+      `;
+            cartItemsEl.appendChild(itemEl);
+          });
+
+          cartTotalEl.textContent = formatPrice(total);
+          cartCountEl.textContent = `(${cart.reduce((s, i) => s + i.qty, 0)})`;
+
+          // attach qty handlers
+          cartItemsEl.querySelectorAll(".qty-inline").forEach((el) => {
+            const idx = Number(el.getAttribute("data-index"));
+            const dec = el.querySelector(".qty-dec");
+            const inc = el.querySelector(".qty-inc");
+            const val = el.querySelector(".qty-val");
+
+            dec.addEventListener("click", () => {
+              if (cart[idx].qty > 1) {
+                cart[idx].qty--;
+                val.textContent = cart[idx].qty;
+                renderCart();
+              }
+            });
+
+            inc.addEventListener("click", () => {
+              cart[idx].qty++;
+              val.textContent = cart[idx].qty;
+              renderCart();
+            });
+          });
+        }
+
+        // Escape HTML helper
+        function escapeHtml(str) {
+          return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        }
+
+        // Open drawer
+        function openCart() {
+          cartOverlay.classList.add("open");
+          cartDrawer.classList.add("open");
+          cartOverlay.setAttribute("aria-hidden", "false");
+          cartDrawer.setAttribute("aria-hidden", "false");
+          // optional: focus on drawer for accessibility
+          cartDrawer.focus();
+        }
+
+        // Close drawer
+        function closeCart() {
+          cartOverlay.classList.remove("open");
+          cartDrawer.classList.remove("open");
+          cartOverlay.setAttribute("aria-hidden", "true");
+          cartDrawer.setAttribute("aria-hidden", "true");
+        }
+
+        // Add to cart logic
+        function addCurrentProductToCart() {
+          const titleEl = document.querySelector(".product-title");
+          const priceEl = document.querySelector(".price");
+          const imgEl = document.querySelector(".main-image img");
+          const sizeEl = document.querySelector("#size");
+          const qtyEl = document.querySelector("#quantity");
+
+          const name = titleEl ? titleEl.textContent.trim() : "Product";
+          const price = priceEl ? parsePrice(priceEl.textContent) : 0;
+          const image = imgEl ? imgEl.getAttribute("src") : "";
+          const size = sizeEl ? sizeEl.value || "" : "";
+          const qty = qtyEl ? Math.max(1, parseInt(qtyEl.value || 1)) : 1;
+
+          // If same product+size exists, increment qty instead of duplicate
+          const existingIndex = cart.findIndex(
+            (i) => i.name === name && i.size === size
+          );
+          if (existingIndex > -1) {
+            cart[existingIndex].qty += qty;
+          } else {
+            cart.push({ name, price, image, size, qty });
+          }
+
+          renderCart();
+          openCart();
+        }
+
+        // Wire UI
+        if (addToCartBtn) {
+          addToCartBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            addCurrentProductToCart();
+          });
+        }
+
+        cartClose.addEventListener("click", closeCart);
+        cartOverlay.addEventListener("click", closeCart);
+
+        // optional: Esc to close
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && cartDrawer.classList.contains("open")) {
+            closeCart();
+          }
+        });
+
+        // initial render (cart empty)
+        renderCart();
+      })();
+    </script>
+</body>
+</html>
